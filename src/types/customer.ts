@@ -11,3 +11,11 @@ export interface Customer {
     onEditClick: (index: number) => void;
     onDelete: (index: number) => void;
   }
+  export interface CustomerFormModalProps {
+    open: boolean;
+    onClose: () => void;
+    onSave: (customer: Customer, index?: number) => void;
+    customers: Customer[];
+    initialCustomer?: Customer;
+    editingIndex?: number;
+  }
