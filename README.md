@@ -1,39 +1,67 @@
-# CRUD Code Test 
+# Customer Management System
 
-Please read each note very carefully!
-Feel free to add/change the project structure to a clean architecture to your view.
+A simple customer management application built with **Vite**, **Tailwind CSS**, and **TypeScript**.
 
-Create a simple CRUD application with React that implements the below model:
+## Tech Stack
+
+- **Vite**: Build tool and development server  
+- **Tailwind CSS**: Utility-first CSS framework for styling  
+- **TypeScript**: Static typing for React components  
+- **React**: Frontend UI library  
+- **Jest** & **React Testing Library**: For unit and integration tests  
+- **Yup** & **React Hook Form**: Form validation and handling
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd <repository-folder>
+   
+# Running the Project
+```bash
+npm run dev
 ```
-Customer {
-	Firstname
-	Lastname
-	DateOfBirth
-	PhoneNumber
-	Email
-	BankAccountNumber
-}
+The app will be available at http://localhost:5173 (or whatever port Vite chooses).
+
+# Testing
+```bash
+npm test
 ```
-## Practices and patterns (Must):
+# Project Structure
+```
+├─ public/
+│   └─ index.html
+├─ src/
+│   ├─ components/
+│   ├─ types/
+│   ├─ App.tsx
+│   ├─ index.tsx
+│   └─ index.css
+├─ tests/
+│   └─ bdd/
+├─ tailwind.config.js
+├─ tsconfig.json
+├─ vite.config.ts
+└─ README.md
+```
+**src/components/:** React components (e.g., CustomerList, CustomerFormModal).
 
-- [TDD](https://testdriven.io/blog/tdd-with-react-jest-and-enzyme-part-one/) [Wiki](https://en.wikipedia.org/wiki/Test-driven_development)
-- [DDD](https://en.wikipedia.org/wiki/Domain-driven_design)
-- [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development)
-- Clean git commits that show your work progress.
-- [Microfrontend](https://en.wikipedia.org/wiki/Microfrontend)
+**src/types/:** TypeScript type definitions (e.g., Customer interface).
 
-### Validations (Must)
+**tests/:** BDD feature files.
 
-- During Create; validate the phone number to be a valid *mobile* number only (You can use [Google LibPhoneNumber](https://github.com/google/libphonenumber) to validate mobile number).
+**tailwind.config.js:** Tailwind CSS configuration.
 
-- A Valid email and a valid account number must be checked before submitting the form.
+**vite.config.ts:** Vite configuration.
 
-- Create a Browser local storage to store the list of customers.
+# Usage
 
-- Customers must be unique in the database: By `Firstname`, `Lastname` and `DateOfBirth`.
+1.  Open the “Customer Management System” in your browser.
+2.  Click “New Customer” to open the modal form.
+3.  Fill in all required fields and click “Create Customer”.
+4.  The new customer will appear in the list immediately.
+5.  To edit, click “Update” on a row; modify fields and click “Save Changes”.
+6.  To delete, click “Delete” on a row and confirm.
 
-- Email must be unique in the local storage or memory array
-
-### Delivery (Must)
-- Please clone this repository in a new GitHub repository in private mode and share with ID: `mason-chase` in private mode on github.com, make sure you do not erase my commits and then create a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) (code review).
 
