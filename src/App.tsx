@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { Customer } from "./types/customer";
+import CustomersList from "./components/customer-list/CustomerList";
 
-function App() {
+export default function App() {
+  const [customers, setCustomers] = useState<Customer[]>([]);
+
+  // Load from localStorage on mount
+  useEffect(() => {
+    const stored = localStorage.getItem("customers");
+    if (stored) {
+      setCustomers(JSON.parse(stored));
+    }
+  }, []);
+
+  // Saves updated list to state + localStorage
+  const saveList = (newList: Customer[]) => {
+    localStorage.setItem("customers", JSON.stringify(newList));
+    setCustomers(newList);
+  };
+  // Called when “Delete” is clicked in the list
+  const handleDelete = (idx: number) => {
+    if (!window.confirm("Are you sure you want to delete this customer?")) {
+      return;
+    }
+    const updated = customers.filter((_, i) => i !== idx);
+    saveList(updated);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div>
+      <header className="p-4 flex justify-between items-center bg-gray-100">
+        <h1 className="text-xl font-bold">Customer Management</h1>
       </header>
+
+      <main className="p-4">
+        <CustomersList
+          customers={customers}
+          onEditClick={()=>{}}
+          onDelete={handleDelete}
+        />
+      </main>
     </div>
   );
 }
-
-export default App;
